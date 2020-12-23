@@ -10,7 +10,7 @@ export class UserServiceService {
   private usersUrl: string;
   private user: UsersModel = null;
   constructor(private http: HttpClient) {
-    this.usersUrl = 'https://sktls.herokuapp.com/api';
+    this.usersUrl = 'https://secret-ocean-49799.herokuapp.com/https://sktls.herokuapp.com/api';
   }
   public register(user: UsersModel): Observable<UsersModel> {
     return this.http.post<UsersModel>(`${this.usersUrl}/signup`, user);
