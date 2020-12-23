@@ -4,13 +4,12 @@ export class HotelsModel {
   public name: string;
   public email: string;
   public fax: string;
-  public internet_access: string;
-  public rooms:string;
+  public internetAccess: string;
+  public rooms: string;
   public phone: number;
   public website: string;
   public stars: string;
-  public city: string;
-  public lattitude: string;
+  public latitude: string;
   public longitude: string;
-  public addr_street: string;
+  public address: string;
 }
