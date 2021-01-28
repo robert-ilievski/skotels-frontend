@@ -30,26 +30,26 @@ export class HotelsComponent implements OnInit {
               private userService: UserServiceService,
               private dom: DomSanitizer) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.hotelService.findAll().subscribe(data => {
       this.hotels = data;
     });
     this.user = this.userService.getUser();
   }
-  show_info(hotel): void {
+  showInfo(hotel): void {
     this.currentHotel = hotel;
     this.hotelInfo.show();
   }
-  show_map(hotel): void {
+  showMap(hotel): void {
     this.currentHotelMap = hotel;
     this.location = this.currentHotelMap.location;
     console.log('location from hotels', this.location);
     this.hotelMap.show();
   }
-  close_modal(): void {
+  closeModal(): void {
     this.hotelInfo.hide();
   }
-  private async list_hotels(): Promise<void> {
+  private async listHotels(): Promise<void> {
     this.hotelService.findAll().subscribe(data => {
       this.hotels = data;
     });
@@ -58,19 +58,19 @@ export class HotelsComponent implements OnInit {
     await this.hotelService.deleteHotel(this.hotels[index]).subscribe(data => {
       this.hotels = data;
     });
-    await this.list_hotels();
+    await this.listHotels();
   }
-  async sort_stars(): Promise<void> {
+  async sortByStars(): Promise<void> {
     await this.hotelService.sortByStars().subscribe(data => {
       this.hotels = data;
     });
   }
-  async sort_price(): Promise<void> {
-    await this.hotelService.sortByPrice().subscribe(data => {
+  async sortAlphabetic(): Promise<void> {
+    await this.hotelService.sortAlphabetic().subscribe(data => {
       this.hotels = data;
     });
   }
-  add_hotel(): void {
+  addHotel(): void {
     this.router.navigate(['./add-edit']);
   }
 }

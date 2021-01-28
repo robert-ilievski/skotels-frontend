@@ -18,7 +18,7 @@ export class AddEditHotelComponent implements OnInit {
       name: ['', [Validators.required]],
       email: ['', []],
       location: ['', [Validators.required]],
-      address: ['', [Validators.required]],
+      addrStreet: ['', [Validators.required]],
       internetAccess: ['', []],
       rooms: ['', []],
       phone: ['', []],
@@ -34,7 +34,6 @@ export class AddEditHotelComponent implements OnInit {
   discard(): void {
     this.router.navigate(['/hotels']);
   }
-  // tslint:disable-next-line:typedef
   async submitHotel() {
     const data = this.hotelsFG.getRawValue();
     await this.hotelService.add(data).subscribe();
